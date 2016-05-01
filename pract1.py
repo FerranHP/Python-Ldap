@@ -108,7 +108,7 @@ if __name__ == '__main__':
 		# Comprovar que existeixi el grup principal del usuari
 		if oneUser.gid in dicGroups:
 			# Afegir a la llista d'usuaris, aquells que el tinguin com a principal	
-			if oneUser.login not in dicGroups[oneUser.gid].userList
+			if oneUser.login not in dicGroups[oneUser.gid].userList:
 				# Afegir a la llista d'usuaris del grup principal el login de l'usuari
 				oneUser.gid.userList.append(oneUser.login)
 				user = plantilles.ADDUSER % (oneUser.login,
