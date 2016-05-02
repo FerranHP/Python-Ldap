@@ -110,7 +110,7 @@ if __name__ == '__main__':
 			# Afegir a la llista d'usuaris, aquells que el tinguin com a principal	
 			if oneUser.login not in dicGroups[oneUser.gid].userList:
 				# Afegir a la llista d'usuaris del grup principal el login de l'usuari
-				oneUser.gid.userList.append(oneUser.login)
+				dicGroups[oneUser.gid].userList.append(oneUser.login)
 				user = plantilles.ADDUSER % (oneUser.login,
 								  oneUser.login, 
 								  oneUser.login,
@@ -126,14 +126,13 @@ if __name__ == '__main__':
 	for group in dicGroups:
 		memberin = ''
 		for login in dicGroups[group].userList:
-			memberin += 'memberUid: %s\n' % (login)
+			memberin += 'memberUid: %s' % (login)
 		group = plantilles.ADDGROUP % (dicGroups[group].gname,
 								dicGroups[group].gname, 
 								dicGroups[group].gid,
 								dicGroups[group].gname,
 								memberin)
 		ff.write(group)
-	ff.write('\n')
 	ff.close()
 	try:
 		# Popen per inserir les dades al servidor LDAP
